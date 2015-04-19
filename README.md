@@ -1,3 +1,7 @@
+BROKEN RIGHT NOW. WILL BE WORKING A BIT LTARE TODAY =)
+======
+
+
 # node-mocktimers
 
 mock timers and timeouts so you can test timer dependent modules without waiting and realistically. 
@@ -60,3 +64,5 @@ time.unmock has been added to help with this.
 
 
 
+
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)

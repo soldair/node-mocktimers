@@ -9,11 +9,13 @@ module.exports = function (delay) {
       var self = this
       var id = ++self.i
       var t = Date.now()
+      self.timers[id] = true;
       setImmediate(function () {
         delay(function () {
           t = Date.now() - t
           if (t < dur) self.msoffset += dur - t
           if (self.timers[id]) fn()
+          delete self.timers[id];
         }, dur)
       })
       return id
@@ -30,6 +32,13 @@ module.exports = function (delay) {
         self.intervals[id] = timer
       })()
       return id
+    },
+    clear:function(id){
+      if(self.intervals[id]){
+        delete self.timers[self.intervals[id]];
+        delete self.intervals[id]; 
+      }
+      delete self.timers[id];
     },
     // lets you get a clock that maintains the contract of timeouts taking at least timeout ms
     now: function () {
