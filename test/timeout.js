@@ -10,10 +10,10 @@ test('can setTimeout', function (t) {
   })
 
   t.equals(time.now(), Date.now())// true
-  var start = Date.now();
+  var start = Date.now()
   time.timeout(function () {
     t.ok(1, 'called user timeout')
-    t.ok(time.now() >= start+1000, 'custom clock is correct.') // true
+    t.ok(time.now() >= start + 1000, 'custom clock is correct.') // true
   }, 1000)
 
 })

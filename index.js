@@ -27,7 +27,7 @@ module.exports = function (delay) {
       (function n () {
         timer = self.timeout(function () {
           fn()
-          if(self.intervals[id]) n()
+          if (self.intervals[id]) n()
         }, dur)
         self.intervals[id] = timer
       })()
