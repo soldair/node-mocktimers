@@ -1,6 +1,6 @@
 # node-mocktimers
 
-mock timers and timeouts for timing dependent node projects
+mock timers and timeouts so you can test timer dependent modules without waiting and realistically. 
 
 
 ```
