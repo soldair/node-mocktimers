@@ -13,7 +13,7 @@ var time = timers(function(fn,delay){
 console.log(time.now() == Date.now())// true
 
 time.timeout(function(){
-  console.log(time.now()-1000 >= Date.now())
+  console.log(time.now()-1000 >= Date.now()) // true
 },1000);
 
 ```
