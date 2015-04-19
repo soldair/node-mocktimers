@@ -1,6 +1,3 @@
-BROKEN RIGHT NOW. WILL BE WORKING A BIT LTARE TODAY =)
-======
-
 
 # node-mocktimers
 
@@ -35,11 +32,15 @@ the default export is a function that returns an object with all of the timing m
 
 ### time.timeout(fn,delay)
 
- setTimeout
+ setTimeout. returns id
 
 ### time.interval(fn.delay)
 
- setInterval
+ setInterval. returns id
+
+### time.clear(id)
+
+ stop a timeout or interval by id
 
 ### time.now()
 

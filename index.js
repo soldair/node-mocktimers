@@ -13,7 +13,7 @@ module.exports = function (delay) {
       setImmediate(function () {
         delay(function () {
           t = Date.now() - t
-          if (t < dur) self.msoffset += dur - t
+          if (t < dur) self.msoffset += (dur+1) - t
           if (self.timers[id]) fn()
           delete self.timers[id];
         }, dur)
