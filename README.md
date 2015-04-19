@@ -1,5 +1,5 @@
 
-# node-mocktimers
+# mocktimer
 
 mock timers and timeouts so you can test timer dependent modules without waiting and realistically. 
 
