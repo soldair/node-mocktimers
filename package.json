@@ -1,0 +1,42 @@
+{
+  "name": "mocktimers",
+  "version": "0.0.0",
+  "description": "mock timers and timeouts for timing dependent js projects",
+  "main": "index.js",
+  "bin": {},
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soldair/node-mocktimers.git"
+  },
+  "homepage": "https://github.com/soldair/node-mocktimers",
+  "keywords": [
+    "mock",
+    "timers",
+    "timing",
+    "settimeout",
+    "timeout",
+    "setinterval",
+    "interval",
+    "clock"
+  ],
+  "author": {
+    "name": "Ryan Day",
+    "email": "soldair@gmail.com",
+    "url": "https://github.com/soldair"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.6"
+  }
+}
