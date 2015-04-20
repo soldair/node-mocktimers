@@ -1,4 +1,7 @@
 module.exports = function (delay) {
+  if (!delay) delay = defaultDelay
+  delay = ordered(delay)
+
   var o = {
     i: 0,
     // track the time that i should have spent in timeouts to add to now.
@@ -10,14 +13,12 @@ module.exports = function (delay) {
       var id = ++self.i
       var t = Date.now()
       self.timers[id] = true
-      setImmediate(function () {
-        delay(function () {
-          t = Date.now() - t
-          if (t < dur) self.msoffset += (dur + 1) - t
-          if (self.timers[id]) fn()
-          delete self.timers[id]
-        }, dur)
-      })
+      delay(function () {
+        t = Date.now() - t
+        if (t < dur) self.msoffset += (dur + 1) - t
+        if (self.timers[id]) fn()
+        delete self.timers[id]
+      }, dur)
       return id
     },
     interval: function (fn, dur) {
@@ -59,4 +60,42 @@ module.exports = function (delay) {
   }
 
   return o
+}
+
+// one call gets run each turn on setImmediate until none are left.
+function ordered (ondelay) {
+  var clk = 0
+  var queue = []
+
+  var checking = 0
+  function check () {
+    if (checking++) return
+
+    setImmediate(function () {
+      var o = queue.shift()
+      clk = o[1]
+      ondelay(function () {
+        checking = 0
+        if (queue.length) check()
+        o[0]()
+      }, o[2])
+    })
+  }
+
+  function delay (fn, ms) {
+    var len = queue.length, i = 0
+    while (queue.length === len) {
+      ++i
+      if (queue[i]) {
+        if (queue[i][1] > clk + ms) queue.splice(i, 0, [fn, clk + ms, ms])
+      } else queue.push([fn, clk + ms, ms])
+    }
+    check()
+  }
+
+  return delay
+}
+
+function defaultDelay (fn) {
+  fn()
 }
