@@ -1,21 +1,40 @@
 
-# mocktimer
+# mocktimers
 
 mock timers and timeouts so you can test timer dependent modules without waiting and realistically. 
 
-
-```
+```js
 var timers = require('mocktimers')
 
-var time = timers(function(fn,delay){
-  fn();// callback with no delay. still async a la setImmediate
-});
+var time = timers();
 
 console.log(time.now() == Date.now())// true
 
 time.timeout(function(){
   console.log(time.now()-1000 >= Date.now()) // true
 },1000);
+
+```
+
+timeouts are executed in order without the need to advance the current tick of the virtual clock.
+
+
+```js
+var time = require('mocktimers')()
+
+var s = "";
+
+time.timeout(funciton(){
+  s += 'c'
+  console.log('i know my ',s); // prints "i know my abc"
+},1000)
+
+time.timeout(function(){
+  s += 'a'
+  time.timeout(function(){
+    s += 'c'
+  },10)
+},10)
 
 ```
 
@@ -26,7 +45,7 @@ api
 
 the default export is a function that returns an object with all of the timing methods. "time"
 
- - delay handler function(fn,delay)
+ - [OPTIONAL] delay handler function(fn,delay)
   - fn, the callback after the delay 
   - delay, and the ms to delay.
 

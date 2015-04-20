@@ -12,6 +12,10 @@ module.exports = function (delay) {
       var self = this
       var id = ++self.i
       var t = Date.now()
+
+      dur = dur||1;
+      if(dur < 0) dur = 1;
+
       self.timers[id] = true
       delay(function () {
         t = Date.now() - t
