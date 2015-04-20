@@ -16,7 +16,7 @@ time.timeout(function(){
 
 ```
 
-timeouts are executed in order without the need to advance the current tick of the virtual clock.
+timeouts are executed in order 
 
 
 ```js
@@ -32,7 +32,7 @@ time.timeout(funciton(){
 time.timeout(function(){
   s += 'a'
   time.timeout(function(){
-    s += 'c'
+    s += 'b'
   },10)
 },10)
 
