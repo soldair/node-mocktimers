@@ -13,8 +13,8 @@ module.exports = function (delay) {
       var id = ++self.i
       var t = Date.now()
 
-      dur = dur||1;
-      if(dur < 0) dur = 1;
+      dur = dur || 1
+      if (dur < 0) dur = 1
 
       self.timers[id] = true
       delay(function () {
