@@ -56,6 +56,7 @@ module.exports = function (delay) {
         interval: setInterval,
         timeout: setTimeout,
         now: Date.now,
+        clear: clearTimeout,
         unmock: function () {
           return this
         }

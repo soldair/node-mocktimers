@@ -74,8 +74,8 @@ mocking time...
 
 so to use this in your tests you would have to use an object like this in your program instead of hitting setTimeout directly. and maybe hang it off of module.exports so you can patch it from the test with this object.
 
-```
-var time = {interval:setInterval,timeout:setTimeout,now:Date.now};
+```js
+var time = {interval:setInterval,timeout:setTimeout,now:Date.now,clear:clearTimeout};
 ```
 
 time.unmock has been added to help with this.

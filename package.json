@@ -1,6 +1,6 @@
 {
   "name": "mocktimers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "mock timers and timeouts for timing dependent js projects",
   "main": "index.js",
   "bin": {},
