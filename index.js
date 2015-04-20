@@ -85,10 +85,12 @@ function ordered (ondelay) {
   function delay (fn, ms) {
     var len = queue.length, i = 0
     while (queue.length === len) {
-      ++i
       if (queue[i]) {
-        if (queue[i][1] > clk + ms) queue.splice(i, 0, [fn, clk + ms, ms])
+        if (queue[i][1] > clk + ms) {
+          queue.splice(i, 0, [fn, clk + ms, ms])
+        }
       } else queue.push([fn, clk + ms, ms])
+      ++i
     }
     check()
   }
